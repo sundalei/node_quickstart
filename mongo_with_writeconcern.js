@@ -1,6 +1,6 @@
 const { MongoClient } = require("mongodb");
 
-const uri = "mongodb://localhost:27091,localhost:27092,localhost:27093";
+const uri = "mongodb://localhost:27017";
 const client = new MongoClient(uri, {
     serverSelectionTimeoutMS: 100000
 });
@@ -9,13 +9,11 @@ async function run() {
     try {
         await client.connect();
 
-        const database = client.db('mflix');
-        const movies = database.collection('movies_initial');
+        const database = client.db('test');
+        const products = database.collection('products');
 
-        const query = { title: 'Back to the Future'};
-        const movie = await movies.findOne(query);
-
-        console.log(movie);
+        await products.insertOne({"_id": 10, "item": "envelopes", "qty" : 100, "type" : "Self-Sealing"},
+         { writeConcern : {"w" : "eachDC", wtimeout : 1000}});
     } finally {
         await client.close();
     }
