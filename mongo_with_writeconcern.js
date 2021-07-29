@@ -1,6 +1,6 @@
 const { MongoClient } = require("mongodb");
 
-const uri = "mongodb://localhost:27017";
+const uri = "mongodb://localhost:27091,localhost:27092,localhost:27093";
 const client = new MongoClient(uri, {
     serverSelectionTimeoutMS: 100000
 });
