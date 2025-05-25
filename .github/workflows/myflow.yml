@@ -26,6 +26,7 @@ jobs:
           npm install
           npm run build
         shell: bash
+        working-directory: ./app
 
       - name: Build project
         run: npm run build
