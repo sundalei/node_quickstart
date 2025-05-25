@@ -21,6 +21,9 @@ jobs:
         with:
           node-version: "18"
 
+      - run: print %ENV
+        shell: perl {0}
+
       - name: Clean install dependencies and build
         run: |
           npm install
