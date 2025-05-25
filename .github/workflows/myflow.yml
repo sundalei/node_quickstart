@@ -31,6 +31,7 @@ jobs:
       - name: Run app script
         run: |
           console.log('Starting application...');
+          console.log('GITHUB_WORKSPACE:', process.env.GITHUB_WORKSPACE);
           require(process.env.GITHUB_WORKSPACE + '/app/index.js');
           console.log('Application executed successfully!');
         shell: node {0}
