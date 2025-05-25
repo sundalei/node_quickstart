@@ -21,7 +21,8 @@ jobs:
         with:
           node-version: "18"
 
-      - run: print %ENV
+      - name: Show environment variables
+        run: foreach $k (sort keys %ENV) { print "$k=$ENV{$k}\n"; }
         shell: perl {0}
 
       - name: Clean install dependencies and build
