@@ -15,7 +15,7 @@ jobs:
       max-parallel: 3
       matrix:
         os_version: [ubuntu-latest, macos-latest]
-        node_version: [14, 16, 18]
+        node_version: [16, 18, 20]
     
     name: Run build tests on ${{ matrix.os_version }} with node ${{ matrix.node_version }}
     runs-on: ${{ matrix.os_version }}
@@ -37,7 +37,7 @@ jobs:
         run: |
           npm install
           npm run build
-        shell: powershell
+        shell: bash
         working-directory: ./app
 
       - name: Run app script
