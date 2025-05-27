@@ -10,7 +10,15 @@ on:
 
 jobs:
   build:
-    runs-on: windows-latest
+    strategy:
+      fail-fast: false
+      max-parallel: 3
+      matrix:
+        os_version: [ubuntu-latest, macos-latest]
+        node_version: [14, 16, 18]
+    
+    name: Run build tests on ${{ matrix.os_version }} with node ${{ matrix.node_version }}
+    runs-on: ${{ matrix.os_version }}
 
     steps:
       - name: Checkout code
@@ -19,7 +27,7 @@ jobs:
       - name: Set up node
         uses: actions/setup-node@v2
         with:
-          node-version: "18"
+          node-version: ${{ matrix.node_version }}
 
       - name: Show environment variables
         run: foreach $k (sort keys %ENV) { print "$k=$ENV{$k}\n"; }
