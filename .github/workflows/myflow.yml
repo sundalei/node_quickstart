@@ -21,6 +21,11 @@ jobs:
     runs-on: ${{ matrix.os_version }}
 
     steps:
+      - name: Show matrix variable
+        run: |
+          echo "Running matrix:"
+          echo "$(echo '${{ toJson(matrix) }}')"
+          
       - name: Checkout code
         uses: actions/checkout@v2
 
