@@ -16,3 +16,10 @@ jobs:
         run: |
           echo "::warning file=app/index.js,line=1,col=5,endColumn=7::Missing semicolon"
           echo "::error file=app/index.js,line=1,col=5,endColumn=7::Error in index.js"
+
+      - name: Set color
+        id: color-generator
+        run: echo "SELECTED_COLOR=green" >> "$GITHUB_OUTPUT"
+
+      - name: Get color
+        run: echo "The selected color is ${{ steps.color-generator.outputs.SELECTED_COLOR }}"
