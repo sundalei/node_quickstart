@@ -11,3 +11,8 @@ jobs:
       - name: Setup environment
         run: |
           echo "::debug::Starting environment setup"
+
+      - name: Echo warning and error messages
+        run: |
+          echo "::warning file=app/index.js,line=1,col=5,endColumn=7::Missing semicolon"
+          echo "::error file=app/index.js,line=1,col=5,endColumn=7::Error in index.js"
