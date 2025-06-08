@@ -7,3 +7,7 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+
+      - name: Setup environment
+        run: |
+          echo "::debug::Starting environment setup"
