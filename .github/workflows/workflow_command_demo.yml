@@ -1,0 +1,9 @@
+name: Debug Message Demo
+on:
+  workflow_dispatch:
+jobs:
+  debug-demo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
